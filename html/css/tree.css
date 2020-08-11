@@ -48,7 +48,7 @@ ul.tree li::before {
     border-bottom:1px solid rgb(100,100,100);
     content:"";
     display:inline-block;
-    left:-7px;
+    left:-8px;
 }
 
 ul.tree li:last-child:before {
