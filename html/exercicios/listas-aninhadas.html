@@ -43,12 +43,7 @@
         directory.onclick = function(event) {
             const ul = directory.nextElementSibling
             const view = ul.style.display
-            if (view === 'none') {
-                ul.style.display = 'block'
-            } else {
-                ul.style.display = 'none'
-            }
-            //ul.style.display = view === 'none' ? 'block' : 'none'
+            ul.style.display = view === 'none' ? 'block' : 'none'
         }
     })
 
