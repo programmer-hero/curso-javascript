@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --page-background-color: lightgray;
+            --header-background-color: #333;
+            --header-font-color: #fff;
+            --header-border-bottom-color: skyblue;
+            --menu-font-family: 'Oswald', sans-serif;
+            --menu-font-color: #fff;
+            --menu-hover-bg-color: skyblue;
+            --menu-hover-font-color: #333;
+            --button-register-bg-color: tomato;
+            --button-register-font-color: #fff;
+        }
+        body {
+            margin: 0;
+            font-family: var(--menu-font-family);
+            background-color: var(--page-background-color);
+        }
+        .cabecalho {
+            background: var(--header-background-color);
+            color: var(--header-font-color);
+            border-bottom: solid 5px var(--header-border-bottom-color);
+            height: 80px;
+        }
+        .logo img {
+            height: 70px;
+            margin-top: 8px;
+        }
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .cabecalho a {
+            text-decoration: none;
+            color: var(--menu-font-color);
+            font-size: 1.3em;
+            padding: 10px 15px;
+        }
+        .menu a:hover {
+            background-color: var(--menu-hover-bg-color);
+            color: var(--menu-hover-font-color);
+        }
+        .cabecalho .botao {
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin-right: 10px;
+        }
+        .destaque {
+            background: var(--button-register-bg-color);
+            color: var(--button-register-font-color);
+        }
+        /* ==================== */
+        /* Solução com Flex Box */
+        /* ==================== */
+        .cabecalho {
+            display: flex;
+            flex-direction: row;    /* default */
+            align-items: center;    /* cross-axis */
+            justify-content: space-between; /* main-axis */
+        }
+        .menu {
+            /* menu deve  crescer mais que os demais */
+            flex-grow: 10;
+        }
+        .menu ul {
+            /* ul é o container de li's*/
+            /* deixando ele com display:flex, o main-axis */
+            /* por padrão é 'row', e todos os li's vão se alinhar */
+            display: flex;
+        }
+        .menu li {
+            margin: 0px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://programmerhero.com.br/wp-content/uploads/2020/07/cropped-logo-05-2.png" alt="Logo" />
+            </a>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        window.onhashchange = function(e) {
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            console.log(oldURL, newURL)
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            if (oldLink) {
+                oldLink.classList.remove('selected')
+            }
+            if (newLink) {
+                newLink.classList.add('selected')
+            }
+        }
+    </script>
+</body>
+
+</html>
