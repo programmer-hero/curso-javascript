@@ -7,7 +7,92 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        :root {
+            --page-background-color: lightgray;
+            --header-background-color: #333;
+            --header-font-color: #fff;
+            --header-border-bottom-color: skyblue;
+            --menu-font-family: 'Oswald', sans-serif;
+            --menu-font-color: #fff;
+            --menu-hover-background-color: skyblue;
+            --menu-hover-font-color: #333;
+            --button-register-background-color: tomato;
+            --button-register-font-color: #fff;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--menu-font-family);
+            background-color: var(--page-background-color);
+        }
+
+        .cabecalho {
+            background: var(--header-background-color);
+            color: var(--header-font-color);
+            border-bottom: solid 5px var(--header-border-bottom-color);
+            height: 80px;
+        }
+
+        .logo img {
+            height: 70px;
+            margin-top: 5px;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cabecalho a {
+            text-decoration: none;
+            color: var(--menu-font-color);
+            font-size: 1.3em;
+            padding: 10px 15px;
+        }
+
+        .menu a:hover {
+            background-color: var(--menu-hover-background-color);
+            color: var(--menu-hover-font-color);
+        }
+
+        .cabecalho .botao {
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin-right: 10px;
+        }
+
+        .destaque {
+            background: var(--button-register-background-color);
+            color: var(--button-register-font-color);
+        }
+
+        /* =================== */
+        /* Solução com FlexBox */
+        /* =================== */
+        .cabecalho {
+            display: flex;
+            flex-direction: row;    /* default */
+            align-items: center;    /* cross-axis */
+            justify-content: space-between; /* main-axis */
+        }
+        .menu {
+            /* menu deve crescer mais que os demais componentes */
+            flex-grow: 10;
+        }
+        .menu ul {
+            /* <ul> é o container dos <li>'s */
+            /* deixando ele como 'display:flex' */
+            /* todos os <li>'s vão se alinhar horizontalmente, */
+            /* pois o padrão é 'flex-direction:row' */
+            display: flex;
+            flex-direction:row;
+        }
+
+        .menu li {
+            margin: 0px 10px;
+        }
+
     </style>
 </head>
 
