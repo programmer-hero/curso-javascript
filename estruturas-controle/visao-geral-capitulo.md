@@ -672,7 +672,7 @@ O laço **for...in**  interage sobre propriedades enumeradas de um objeto, na or
 
 ### Sintaxe:
 ~~~javascript
-for for (variavel in objeto) {
+for (variavel in objeto) {
 
   ///declaração
 
