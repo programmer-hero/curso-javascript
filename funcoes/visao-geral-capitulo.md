@@ -520,6 +520,8 @@ player.sayNameAndAttack();
 
 Funções arrows são sempre funções anônimas. Elas precisam ser atribuídas a uma constante ou variável para ser invocada posteriormente.
 
+### **Exemplo 16**:
+
 ```javascript
 let dobro = function (a) {
   return 2 * a;
@@ -544,6 +546,8 @@ ola = (_) => "Olá";
 O método **bind** não consegue modificar o contexto do this em **Funções Arrow**.
 
 **Arrow Functions** sempre irão manter o contexto do **this** mesmo que o desenvolvedor tente modificar seu contexto através de **bind**, **call** ou **apply**.
+
+### **Exemplo 17**:
 
 ```javascript
 console.log("***** Function *****");
@@ -573,4 +577,396 @@ console.log("***** Arrow Function e bind *****");
 compareWithThisArrow = compareWithThisArrow.bind(obj);
 compareWithThisArrow(obj);
 compareWithThisArrow(module.exports);
+```
+
+# 8. **Funções Anônimas**
+
+**Funções anônimas** são funções que não possuem nomes.
+
+**Funções anônimas** são sempre atribuídas a **variáveis** ou **constantes** em JavaScript.
+
+Uma função do tipo Arrow é sempre uma função anônima.
+
+Funções anônimas podem ser declaradas dentro de objetos com ou sem a palavra reservada **"function"**.
+
+### **Exemplo 18**:
+
+```javascript
+/**
+ * Soma dois numeros
+ * @param {number} x
+ * @param {number} y
+ */
+const sum = function (x, y) {
+  return x + y;
+};
+
+/**
+ * Exibe no console o resultado da soma
+ * @param {number} a
+ * @param {number} b
+ * @param {function} operation
+ */
+const printResult = function (a, b, operation = sum) {
+  console.log(operation(a, b));
+};
+
+printResult(3, 6);
+
+printResult(6, 9, sum);
+
+printResult(6, 9, function (x, y) {
+  return x - y;
+});
+
+//funções arrow são sempre funções anônimas
+printResult(6, 9, (x, y) => x * y);
+
+/**
+ * Objeto contendo dois tipos de funções anônimas.
+ */
+const people = {
+  speak: function () {
+    console.log("Hello World!");
+  },
+  talk() {
+    console.log("Hello World again!");
+  },
+};
+
+people.speak();
+people.talk();
+```
+
+# 9. **Funções Callback**
+
+Callback siginfica "chamar de volta".
+São funções que quando passadas como parâmetro de outra função, são invocadas a cada "evento" disparado na função principal.
+
+Um exemplo muito comum é utilizar funções 'callback' como parâmetros para a função 'forEach'.
+
+Outro exemplo onde as funções 'callback' são muito utilizadas são em funções do tipo 'Ajax'. Neste tipo de função, são passados como parâmetros 02 funções 'callback':
+
+- Uma para tratar as requisições que receberam respostas sem erro;
+- Uma para tratar os erros da requisição (caso ocorra falha)
+
+### **Exemplo 19**:
+
+```javascript
+//lista de fabricantes
+const manufacturers = ["Mercedes", "Audi", "BMW"];
+
+/**
+ * Imprime o índice e o nome.
+ * @param {string} name
+ * @param {number} index
+ */
+function print(name, index) {
+  console.log(`${index + 1}. ${name}`);
+}
+
+//utilizando a função 'print' como parâmetro 'callback' da função 'forEach'
+manufacturers.forEach(print);
+
+//criando uma função 'callback' para exibir o conteúdo da lista
+manufacturers.forEach(function (name) {
+  console.log(name);
+});
+
+//criando uma função 'callback' do tipo 'Arrow' para exibir o conteúdo da lista
+manufacturers.forEach((manufacturer) => console.log(manufacturer));
+```
+
+Mas existe ganho real ao utilizar funções do tipo 'Callback' ?
+Uma abordagem interessante para utilizar funções 'Callback' é o cenário de manipulação de 'arrays'.
+
+Imagine que você precisa filtrar um array de notas para criar um novo array com o resultado obtido no filtro.
+
+O exemplo abaixo demonstra abordagens com e sem 'callback' para demosntrar o ganho ao utilizar o recurso de calbacks.
+
+### **Exemplo 20**:
+
+```javascript
+const notas = [7.7, 6.5, 5.2, 8.9, 3.6, 7.1, 9.0];
+
+//sem callback
+let notasBaixas1 = [];
+for (let i in notas) {
+  if (notas[i] < 7) {
+    notasBaixas1.push(notas[i]);
+  }
+}
+
+console.log(notasBaixas1);
+
+//com callback
+//se o resultado da função callback for verdadeiro,
+//os itens válidos serão filtrados criando um
+//'novo' array resultante.
+const notasBaixas2 = notas.filter(function (nota) {
+  return nota < 7;
+});
+
+console.log(notasBaixas2);
+
+//versão menos verbosa
+const notasBaixas3 = notas.filter((nota) => nota < 7);
+console.log(notasBaixas3);
+```
+
+Funções 'callback' são muito utilizadas no navegador.
+
+Um exemplo simples de sua utilização é quando registramos o click do mouse para executar uma função.
+
+### **Exemplo 21**:
+
+```javascript
+//Função callback para manipular eventos de click do mouse na tag 'body'
+document.getElementsByTagName("body")[0].onclick = function (event) {
+  console.log("O evento ocorreu!");
+};
+```
+
+# 10. **Funções Construtoras**
+
+Funções construtora tem forte relação ao paradigma 'orientado a objeto'.
+
+Elas servem para 'criar' instâncias de novos objetos.
+
+Podemos criar funções 'publicas' e funções 'privadas' dentro de funções construtoras.
+
+Para criar funções públicas, basta utilizar o modificador 'this' com a notação ponto antes do nome das funções.
+
+### **Exemplo 22**:
+
+```javascript
+function Carro(velocidadeMaxima = 200, delta = 5) {
+  //atributo privado
+  let velocidadeAtual = 0;
+
+  //metodo público
+  this.acelerar = function () {
+    if (velocidadeAtual + delta <= velocidadeMaxima) {
+      velocidadeAtual += delta;
+    } else {
+      velocidadeAtual = velocidadeMaxima;
+    }
+  };
+
+  //metodo público
+  this.getVelocidadeAtual = function () {
+    return velocidadeAtual;
+  };
+}
+
+//objeto criado a partir da função construtora
+const uno = new Carro();
+uno.acelerar();
+console.log(uno.getVelocidadeAtual());
+
+//objeto criado a partir da função construtora
+const ferrari = new Carro(350, 20);
+ferrari.acelerar();
+ferrari.acelerar();
+ferrari.acelerar();
+console.log(ferrari.getVelocidadeAtual());
+
+//analisando o tipo da Função constutora
+console.log(typeof Carro);
+
+//analisando o tipo do objeto 'ferrari'
+console.log(typeof ferrari);
+```
+
+# 11. **Tipos de declarações**
+
+Existem basicamente 03 tipos de declarações de funções em javascript.
+
+- Function Declaration
+- Function Expression
+- Function Named Expression
+
+### **Exemplo 23**:
+
+```javascript
+console.log(soma(3, 6));
+
+//function declaration
+function soma(x, y) {
+  return x + y;
+}
+
+//function expression
+const sub = function (x, y) {
+  return x - y;
+};
+console.log(sub(3, 6));
+
+//function named expression
+const multi = function multi(x, y) {
+  return x * y;
+};
+console.log(multi(3, 6));
+```
+
+# 12. **Contexto Léxico**
+
+Em JavaScript, toda função carrega consigo o 'contexto' ao qual foi definida.
+
+Observe que no exemplo abaixo, ao invocarmos a função 'exec()', o valor impresso no console é 'Global', e não 'Local'.
+
+### **Exemplo 24**:
+
+```javascript
+const valor = "Global";
+
+function myFunction() {
+  console.log(valor);
+}
+
+myFunction();
+
+function exec() {
+  const valor = "Local";
+  myFunction();
+}
+
+exec();
+```
+
+Este é um conceito importante para endendermos o que são 'closures'.
+
+# 13. **Closures**
+
+Closure é o escopo criado quando uma função é declarada. A Clousure 'envolve' a função.
+
+Esse escopo permite a função acessar e manipular variáveis externas à função.
+
+### **Exemplo 25**:
+
+```javascript
+//contexto léxico em ação !
+const x = "Global";
+
+function fora() {
+  const x = "Local";
+  function dentro() {
+    return x;
+  }
+  return dentro();
+}
+
+const minhaFuncao = fora;
+console.log(minhaFuncao());
+```
+
+# 14. **Funções Factory**
+
+Funções Factory são **'funções construtoras'**.
+
+São funções que **'retornam objetos'**.
+
+Factory é um Design Patter (Padrão de projeto) utilizado em diversas linguagens de programação, e muito utilizada em JavaScript.
+
+### **Exemplo 26**:
+
+```javascript
+/**
+ * Função Factory para criar um objeto com atributos fixos.
+ */
+function criarPessoa() {
+  return {
+    nome: "Pedro",
+    sobrenome: "Paulo",
+  };
+}
+
+console.log(criarPessoa());
+
+/**
+ * Funcao Factory para criar um objeto com atributos variáveis e fixos.
+ * @param {string} nome
+ * @param {number} preco
+ */
+function criarProduto(nome, preco, desconto = 0.1) {
+  return {
+    nome,
+    preco,
+    desconto,
+  };
+}
+console.log(criarProduto("Notebook", 5000));
+console.log(criarProduto("iPad", 3000));
+```
+
+# 15. **Classes vs. Funções Factory**
+
+Classes são formas diferentes de se implementar funções em JavaScript.
+
+Classes são Funções escritas de forma diferente.
+
+### **Exemplo 27**:
+
+```javascript
+/**
+ * Exemplo Classe
+ */
+class Pessoa {
+  constructor(nome) {
+    this.nome = nome;
+  }
+
+  falar() {
+    console.log(`Meu nome é ${this.nome}`);
+  }
+}
+
+const p1 = new Pessoa("João");
+p1.falar();
+
+/**
+ * Exemplo Factory
+ * @param {string} nome
+ */
+const criarPessoa = (nome) => {
+  return {
+    falar: () => console.log(`Meu nome é ${nome}`),
+  };
+};
+
+const p2 = criarPessoa("Marcos");
+p2.falar();
+
+/**
+ * Exemplo Factory
+ * @param {string} nome
+ */
+function PessoaFactory(nome) {
+  this.falar = function () {
+    console.log(`Meu nome é ${nome}`);
+  };
+}
+
+const p3 = new PessoaFactory("José");
+p3.falar();
+```
+
+# 16. **IIFE**
+
+IIFE (Immediately Invoked Function Expression) é uma função em JavaScript que é executada assim que definida.
+
+É um Design Pattern também conhecido como Self-Executing Anonymous Function e contém duas partes principais. A primeira é a função anônima cujo escopo léxico é encapsulado entre parênteses. Isso previne o acesso externo às variáveis declaradas na IIFE, bem como evita que estas variáveis locais poluam o escopo global.
+
+A segunda parte corresponde à criação da expressão (), por meio da qual o interpretador JavaScript avaliará e executará a função.
+
+### **Exemplo 28**:
+
+```javascript
+//IIFE - Immediately Invoked Function Expression
+
+(function () {
+  console.log("Será executado na hora!");
+  console.log("Utilizando IIFE é possível fugir do escopo global!");
+  console.log("Tudo o que for criado, fica dentro do escopo desta função!");
+})();
 ```
