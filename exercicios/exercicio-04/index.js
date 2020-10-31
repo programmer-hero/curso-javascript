@@ -3,8 +3,11 @@
  * A função deverá imprimir o resultado e o resto da divisão destes dois valores.
  */
 const divisao = (dividendo, divisor) => {
+  console.log("Exercício 04");
+  console.log("-------------");
   console.log("Resultado: " + Math.floor(dividendo / divisor));
   console.log(`Resto: ${dividendo % divisor}`);
+  console.log("-------------");
 };
 
-divisao(11, 4);
+module.exports = { divisao };

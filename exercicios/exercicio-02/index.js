@@ -17,6 +17,13 @@ const classificaTriangulo = (lado1, lado2, lado3) => {
   }
 };
 
-console.log(classificaTriangulo(2, 2, 2)); //equilátero
-console.log(classificaTriangulo(2, 3, 3)); //isósceles
-console.log(classificaTriangulo(2, 3, 4)); //escaleno
+const calcularTriangulos = () => {
+  console.log("Exercício 02");
+  console.log("-------------");
+  console.log(classificaTriangulo(2, 2, 2)); //equilátero
+  console.log(classificaTriangulo(2, 3, 3)); //isósceles
+  console.log(classificaTriangulo(2, 3, 4)); //escaleno
+  console.log("-------------");
+};
+
+module.exports = { calcularTriangulos };

@@ -26,4 +26,11 @@ const avaliaPontuacoes = (pontuacoes) => {
   return [qtdQuebraRecordes, piorJogo];
 };
 
-console.log(avaliaPontuacoes(stringPontuacoes));
+const calculaPontuacoes = () => {
+  console.log("Exercício 06");
+  console.log("-------------");
+  console.log(avaliaPontuacoes(stringPontuacoes));
+  console.log("-------------");
+};
+
+module.exports = { calculaPontuacoes };

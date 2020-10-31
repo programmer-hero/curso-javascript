@@ -11,4 +11,11 @@ const expoente = (base, expoente) => {
   return resultado;
 };
 
-console.log(expoente(2, 3));
+const calcularExpoentes = () => {
+  console.log("Exercício 03");
+  console.log("-------------");
+  console.log(expoente(2, 3));
+  console.log("-------------");
+};
+
+module.exports = { calcularExpoentes };
