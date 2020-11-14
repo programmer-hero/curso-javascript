@@ -1,9 +1,15 @@
-const stringPontuacoes = "10, 20, 20, 8, 25, 3, 0, 30, 1";
+const stringPontuacoes = '10, 20, 20, 8, 25, 3, 0, 30, 1';
 
 const avaliaPontuacoes = (pontuacoes) => {
-  let listaPontos = [];
-  pontuacoes.split(", ").map((item) => {
+  const listaPontos = [];
+  pontuacoes.split(', ').map((item) => {
     listaPontos.push(Number(item));
+    return item;
+  });
+
+  pontuacoes.split(', ').map((item) => {
+    listaPontos.push(Number(item));
+    return item;
   });
   let qtdQuebraRecordes = 0;
   let piorJogo = 1;
@@ -20,17 +26,17 @@ const avaliaPontuacoes = (pontuacoes) => {
     }
     console.log(`maior pontuacao = ${maiorPontuacao}`);
     console.log(`menor pontuacao = ${menorPontuacao}`);
-    console.log("---------");
+    console.log('---------');
   }
 
   return [qtdQuebraRecordes, piorJogo];
 };
 
 const calculaPontuacoes = () => {
-  console.log("Exercício 06");
-  console.log("-------------");
+  console.log('Exercício 06');
+  console.log('-------------');
   console.log(avaliaPontuacoes(stringPontuacoes));
-  console.log("-------------");
+  console.log('-------------');
 };
 
 module.exports = { calculaPontuacoes };
