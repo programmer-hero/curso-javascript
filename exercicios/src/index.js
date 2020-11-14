@@ -19,7 +19,3 @@ exercicio05.formatarValorDecimal(0.1 + 0.2);
 exercicio06.calcularJuros();
 exercicio07.calcularBhaskara();
 exercicio08.calculaPontuacoes();
-
-if ('test' == 'test') {
-  console.log('teste ok');
-}
