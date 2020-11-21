@@ -1,3 +1,4 @@
+const logger = require('../../logger');
 /**
  * Crie uma função que recebe dois parâmetros, base e expoente,
  * e retorne a base elevada ao expoente.
@@ -9,10 +10,10 @@ const expoente = (base, exp) => {
 };
 
 const calcularExpoentes = () => {
-  console.log('Exercício 03');
-  console.log('-------------');
-  console.log(expoente(2, 3));
-  console.log('-------------');
+  logger.info('Exercício 03');
+  logger.info('-------------');
+  logger.info(expoente(2, 3));
+  logger.info('-------------');
 };
 
 module.exports = { calcularExpoentes };

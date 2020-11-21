@@ -1,3 +1,4 @@
+const logger = require('../../logger');
 /**
  * Uma das vantagens da programação é a automatização de tarefas que não gostamos de realizar.
  * Dito isto, elabore uma função cujo objetivo é resolver a fórmula de Bhaskara.
@@ -23,13 +24,13 @@ const bhaskara = (ax2, bx, c) => {
 };
 
 const calcularBhaskara = () => {
-  console.log('Exercício 07');
-  console.log('-------------');
-  console.log(bhaskara(1, 3, 2));
-  console.log(bhaskara(3, 1, 2));
-  console.log(bhaskara(1, -5, 6));
-  console.log(bhaskara(3, 5, -5));
-  console.log('-------------');
+  logger.info('Exercício 07');
+  logger.info('-------------');
+  logger.info(bhaskara(1, 3, 2));
+  logger.info(bhaskara(3, 1, 2));
+  logger.info(bhaskara(1, -5, 6));
+  logger.info(bhaskara(3, 5, -5));
+  logger.info('-------------');
 };
 
 module.exports = { calcularBhaskara };

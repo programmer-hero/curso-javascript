@@ -1,3 +1,5 @@
+const logger = require('../../logger');
+
 const stringPontuacoes = '10, 20, 20, 8, 25, 3, 0, 30, 1';
 
 const avaliaPontuacoes = (pontuacoes) => {
@@ -24,19 +26,19 @@ const avaliaPontuacoes = (pontuacoes) => {
       menorPontuacao = listaPontos[i];
       piorJogo = i + 1;
     }
-    console.log(`maior pontuacao = ${maiorPontuacao}`);
-    console.log(`menor pontuacao = ${menorPontuacao}`);
-    console.log('---------');
+    logger.info(`maior pontuacao = ${maiorPontuacao}`);
+    logger.info(`menor pontuacao = ${menorPontuacao}`);
+    logger.info('---------');
   }
 
   return [qtdQuebraRecordes, piorJogo];
 };
 
 const calculaPontuacoes = () => {
-  console.log('Exercício 06');
-  console.log('-------------');
-  console.log(avaliaPontuacoes(stringPontuacoes));
-  console.log('-------------');
+  logger.info('Exercício 06');
+  logger.info('-------------');
+  logger.info(avaliaPontuacoes(stringPontuacoes));
+  logger.info('-------------');
 };
 
 module.exports = { calculaPontuacoes };
