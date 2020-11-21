@@ -6,14 +6,19 @@ const logger = require('../../logger');
 const calcularOperacoes = (op1, op2) => {
   logger.info('Exercício 01');
   logger.info('-------------');
+  const result = {
+    soma: op1 + op2,
+    subtracao: op1 - op2,
+    multiplicacao: op1 * op2,
+    divisao: op1 / op2,
+  };
+
   logger.info(
-    `soma=${op1 + op2}, subtracao=${op1 - op2}, multiplicacao=${
-      op1 * op2
-    }, divisão=${op1 / op2}`,
+    `soma=${result.soma}, subtracao=${result.subtracao}, multiplicacao=${result.multiplicacao}, divisão=${result.divisao}`,
   );
   logger.info('-------------');
-};
 
-// calcularOperacoes(1, 2);
+  return result;
+};
 
 module.exports = { calcularOperacoes };
