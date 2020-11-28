@@ -1,4 +1,3 @@
-const logger = require('../../logger');
 /**
  * Os triângulos podem ser classificados em 3 tipos quanto ao tamanho de seus lados:
  * - Equilátero: Os três lados são iguais.
@@ -18,13 +17,4 @@ const classificaTriangulo = (lado1, lado2, lado3) => {
   return 'Escaleno';
 };
 
-const calcularTriangulos = () => {
-  logger.info('Exercício 02');
-  logger.info('-------------');
-  logger.info(classificaTriangulo(2, 2, 2)); // equilátero
-  logger.info(classificaTriangulo(2, 3, 3)); // isósceles
-  logger.info(classificaTriangulo(2, 3, 4)); // escaleno
-  logger.info('-------------');
-};
-
-module.exports = { calcularTriangulos };
+module.exports = { classificaTriangulo };

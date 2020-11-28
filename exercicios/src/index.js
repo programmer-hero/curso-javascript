@@ -1,6 +1,5 @@
 const logger = require('../logger');
 
-const exercicio01 = require('./exercicio-01');
 const exercicio02 = require('./exercicio-02');
 const exercicio03 = require('./exercicio-03');
 const exercicio04 = require('./exercicio-04');
@@ -13,7 +12,6 @@ logger.info('-------------------------------------------');
 logger.info('*** Lista de Exercícios JavaScript 2020 ***');
 logger.info('-------------------------------------------');
 
-exercicio01.calcularOperacoes(1, 2);
 exercicio02.calcularTriangulos();
 exercicio03.calcularExpoentes();
 exercicio04.divisao(11, 4);
