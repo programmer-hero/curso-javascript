@@ -1,4 +1,3 @@
-const logger = require('../../logger');
 /**
   Crie uma função que irá receber dois valores,
   o dividendo e o divisor.
@@ -6,11 +5,11 @@ const logger = require('../../logger');
   da divisão destes dois valores.
  */
 const divisao = (dividendo, divisor) => {
-  logger.info('Exercício 04');
-  logger.info('-------------');
-  logger.info(`Resultado: ${Math.floor(dividendo / divisor)}`);
-  logger.info(`Resto: ${dividendo % divisor}`);
-  logger.info('-------------');
+  const result = {
+    resultado: Math.floor(dividendo / divisor),
+    resto: dividendo % divisor,
+  };
+  return result;
 };
 
 module.exports = { divisao };
