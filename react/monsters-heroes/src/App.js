@@ -17,6 +17,7 @@ class App extends Component {
   }
 
   render() {
+    //codigo apenas em dev
     return (
       <div className="App">
         {this.state.monsters.map(monster => (
